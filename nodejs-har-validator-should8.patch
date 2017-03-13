@@ -1,0 +1,85 @@
+commit c66cfc8820efdfdac580ede98414e970dda4e84d
+Author: Tom Hughes <tom@compton.nu>
+Date:   Sat Dec 19 17:30:37 2015 +0000
+
+    Update to should 8.x which now includes should-promised
+
+diff --git a/package.json b/package.json
+index 1a69e52..351f9c0 100644
+--- a/package.json
++++ b/package.json
+@@ -43,8 +43,7 @@
+     "istanbul": "^0.4.0",
+     "mocha": "^2.3.4",
+     "require-directory": "^2.1.1",
+-    "should": "^7.1.1",
+-    "should-promised": "^0.3.1",
++    "should": "^8.0.2",
+     "standard": "^5.4.1"
+   },
+   "dependencies": {
+diff --git a/test/index.js b/test/index.js
+index 05c481c..2416f68 100644
+--- a/test/index.js
++++ b/test/index.js
+@@ -6,8 +6,6 @@ var fixtures = require('./fixtures')
+ var validate = require('..')
+ var ValidationError = require('../lib/error')
+ 
+-require('should-promised')
+-
+ describe('Promises', function () {
+   it('should return a Promise', function () {
+     validate().should.be.a.Promise()
+diff --git a/test/log.js b/test/log.js
+index 7d1c0cb..1bcd3a7 100644
+--- a/test/log.js
++++ b/test/log.js
+@@ -6,8 +6,6 @@ var fixtures = require('./fixtures')
+ var validate = require('..')
+ var ValidationError = require('../lib/error')
+ 
+-require('should-promised')
+-
+ describe('Full HAR', function () {
+   it('should fail with empty object', function () {
+     validate({}).should.be.rejectedWith(ValidationError, {
+diff --git a/test/misc.js b/test/misc.js
+index fbf3a7c..6b342b9 100644
+--- a/test/misc.js
++++ b/test/misc.js
+@@ -4,8 +4,6 @@
+ 
+ var validate = require('..')
+ 
+-require('should-promised')
+-
+ describe('Cache Entry', function () {
+   it('should allow null beforeRequest', function () {
+     var cache = {
+diff --git a/test/request.js b/test/request.js
+index 4422f5c..5c446a5 100644
+--- a/test/request.js
++++ b/test/request.js
+@@ -6,8 +6,6 @@ var fixtures = require('./fixtures')
+ var validate = require('..')
+ var ValidationError = require('../lib/error')
+ 
+-require('should-promised')
+-
+ describe('Request Only', function () {
+   it('should fail with empty object', function () {
+     validate.request({}).should.be.rejectedWith(ValidationError, {
+diff --git a/test/response.js b/test/response.js
+index e4bfd0f..2761b6d 100644
+--- a/test/response.js
++++ b/test/response.js
+@@ -6,8 +6,6 @@ var fixtures = require('./fixtures')
+ var validate = require('..')
+ var ValidationError = require('../lib/error')
+ 
+-require('should-promised')
+-
+ describe('Response Only', function () {
+   it('should fail with empty object', function () {
+     validate.response({}).should.be.rejectedWith(ValidationError, {
